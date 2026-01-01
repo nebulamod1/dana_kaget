@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unlock Dana Kaget</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background: #f4f6f8;
+        margin: 0;
+        min-height: 100svh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 16px;
+      }
+
+      .card {
+        background: #ffffff;
+        width: 100%;
+        max-width: 420px;
+        padding: 20px;
+        border-radius: 16px;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+        text-align: center;
+      }
+
+      h2 {
+        margin: 0 0 8px;
+        font-size: 22px;
+      }
+
+      p {
+        font-size: 14px;
+        margin-bottom: 12px;
+        color: #555;
+      }
+
+      pre {
+        background: #f1f5f9;
+        padding: 14px;
+        border-radius: 12px;
+        font-size: 14px;
+        text-align: left;
+        overflow-x: auto;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px;
+        margin-top: 14px;
+        border-radius: 10px;
+        border: 1px solid #d1d5db;
+        font-size: 16px;
+        text-align: center;
+      }
+
+      button {
+        margin-top: 16px;
+        width: 100%;
+        padding: 14px;
+        border: none;
+        border-radius: 12px;
+        background: #16a34a;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      button:disabled {
+        background: #86efac;
+        cursor: not-allowed;
+      }
+
+      .error {
+        color: #dc2626;
+        margin-top: 12px;
+        font-size: 14px;
+        display: none;
+      }
+
+      .loading {
+        margin-top: 12px;
+        font-size: 14px;
+        color: #15803d;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h2>💸 Unlock Dana Kaget</h2>
+      <p>Yang mau DAGET asah otak dlu AWOKWOK🤣</p>
+
+      <pre id="question"></pre>
+
+      <input
+        type="number"
+        id="password"
+        placeholder="Jawab disini ya bree"
+        inputmode="numeric"
+      />
+
+      <button id="unlockBtn" onclick="unlock()">UNLOCK</button>
+
+      <div class="loading" id="loading">
+        ⏳ Menghubungkan ke server rejeki...
+      </div>
+
+      <div class="error" id="error">❌ Jawaban salah, coba lagi</div>
+    </div>
+
+    <script>
+      const danaLink =
+        "https://link.dana.id/danakaget?c=sp9hxdszu&r=djCjBb&orderId=20251229101214977415010300166753755312278/";
+
+      // BANK SOAL (LEVEL AWAM)
+      const questions = [
+        {
+          code: `let x = 4;
+let y = 6;
+let hasil = x + y;
+
+console.log(hasil);`,
+          answer: 10,
+        },
+        {
+          code: `let angka = 5;
+angka = angka * 2;
+
+console.log(angka);`,
+          answer: 10,
+        },
+        {
+          code: `let total = 0;
+total = total + 3;
+total = total + 7;
+
+console.log(total);`,
+          answer: 10,
+        },
+        {
+          code: `let a = 8;
+let b = 2;
+
+console.log(a - b);`,
+          answer: 6,
+        },
+        {
+          code: `let x = 3;
+let y = 4;
+
+console.log(x * y);`,
+          answer: 12,
+        },
+      ];
+
+      // Pilih soal random saat load
+      const randomQuestion =
+        questions[Math.floor(Math.random() * questions.length)];
+      document.getElementById("question").textContent = randomQuestion.code;
+
+      function unlock() {
+        const input = document.getElementById("password").value;
+        const error = document.getElementById("error");
+        const loading = document.getElementById("loading");
+        const button = document.getElementById("unlockBtn");
+
+        error.style.display = "none";
+
+        if (Number(input) === randomQuestion.answer) {
+          button.disabled = true;
+          button.innerText = "PROCESSING...";
+          loading.style.display = "block";
+
+          setTimeout(() => {
+            window.location.href = danaLink;
+          }, 1500);
+        } else {
+          error.style.display = "block";
+        }
+      }
+    </script>
+  </body>
+</html>
