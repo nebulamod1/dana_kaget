@@ -120,48 +120,47 @@
 
     <script>
       const danaLink =
-        "https://link.dana.id/danakaget?c=srpxg28r3&r=djCjBb&orderId=20260101101214508815010300166753755761989";
+        "https://link.dana.id/danakaget?c=sp9hxdszu&r=djCjBb&orderId=20251229101214977415010300166753755312278/";
 
       // BANK SOAL (LEVEL AWAM)
       const questions = [
         {
-          code: `let x = 4;
-let y = 6;
-let hasil = x + y;
+          code: `let x = 2;
+      let hasil = x ** 3;
 
-console.log(hasil);`,
+      console.log(hasil);`,
+          answer: 8,
+        },
+        {
+          code: `let hearts = 5;
+      let total = hearts * 2;
+
+      console.log(total);`,
           answer: 10,
         },
         {
-          code: `let angka = 5;
-angka = angka * 2;
+          code: `let h2h = 2;
+      let power = h2h ** 2;
 
-console.log(angka);`,
+      console.log(power);`,
+          answer: 4,
+        },
+        {
+          code: `let fans = 3;
+      fans = fans + 7;
+
+      console.log(fans);`,
           answer: 10,
         },
         {
-          code: `let total = 0;
-total = total + 3;
-total = total + 7;
+          code: `let bias = 4;
+      let comeback = 2;
 
-console.log(total);`,
-          answer: 10,
-        },
-        {
-          code: `let a = 8;
-let b = 2;
-
-console.log(a - b);`,
-          answer: 6,
-        },
-        {
-          code: `let x = 3;
-let y = 4;
-
-console.log(x * y);`,
-          answer: 12,
+      console.log(bias ** comeback);`,
+          answer: 16,
         },
       ];
+
 
       // Pilih soal random saat load
       const randomQuestion =
@@ -191,5 +190,3 @@ console.log(x * y);`,
     </script>
   </body>
 </html>
-
-
