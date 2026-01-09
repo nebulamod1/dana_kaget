@@ -120,44 +120,48 @@
 
     <script>
       const danaLink =
-        "https://link.dana.id/danakaget?c=syf7pt35t&r=djCjBb&orderId=20260102101214555515010300166753755740055";
+        "https://link.dana.id/danakaget?c=svhvs5r9z&r=djCjBb&orderId=20260109101214375415010300166753756684248";
 
-      // BANK SOAL (LEVEL AWAM)
+      // BANK SOAL (LEVEL MENENGAH)
       const questions = [
         {
           code: `let x = 2;
-      let hasil = x ** 3;
-
+      let y = 3;
+      let hasil = x ** y + 4;
+      
       console.log(hasil);`,
-          answer: 8,
+          answer: 12, // 2^3 = 8 + 4
         },
         {
-          code: `let hearts = 5;
-      let total = hearts * 2;
-
+          code: `let hearts = 4;
+      let bonus = 2;
+      let total = hearts ** bonus;
+      
       console.log(total);`,
-          answer: 10,
+          answer: 16, // 4^2
         },
         {
-          code: `let h2h = 2;
-      let power = h2h ** 2;
-
-      console.log(power);`,
-          answer: 4,
+          code: `let a = 3;
+      let b = 2;
+      let c = 4;
+      
+      console.log(a * b + c);`,
+          answer: 10, // 3*2 + 4
         },
         {
-          code: `let fans = 3;
-      fans = fans + 7;
-
+          code: `let fans = 5;
+      fans = fans + 3;
+      fans = fans * 2;
+      
       console.log(fans);`,
-          answer: 10,
+          answer: 16, // (5+3)*2
         },
         {
-          code: `let bias = 4;
-      let comeback = 2;
-
-      console.log(bias ** comeback);`,
-          answer: 16,
+          code: `let bias = 2;
+      let comeback = 3;
+      
+      console.log((bias + 1) ** comeback);`,
+          answer: 27, // (2+1)^3
         },
       ];
 
@@ -190,4 +194,5 @@
     </script>
   </body>
 </html>
+
 
