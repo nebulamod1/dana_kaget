@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
@@ -11,7 +11,11 @@
       }
 
       body {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
           sans-serif;
         background: #f4f6f8;
         margin: 0;
@@ -95,6 +99,7 @@
       }
     </style>
   </head>
+
   <body>
     <div class="card">
       <h2>💸 Unlock Dana Kaget</h2>
@@ -102,12 +107,7 @@
 
       <pre id="question"></pre>
 
-      <input
-        type="number"
-        id="password"
-        placeholder="Jawab disini ya bree"
-        inputmode="numeric"
-      />
+      <input type="text" id="password" placeholder="Jawab disini ya bree" />
 
       <button id="unlockBtn" onclick="unlock()">UNLOCK</button>
 
@@ -115,96 +115,84 @@
         ⏳ Menghubungkan ke server rejeki...
       </div>
 
-      <div class="error" id="error">❌ Jawaban salah bree, refresh terus coba lagi</div>
+      <div class="error" id="error">
+        ❌ Jawaban salah bree, refresh dulu terus coba lagi
+      </div>
     </div>
 
     <script>
       const danaLink =
-        "https://link.dana.id/danakaget?c=sf7nazngw&r=djCjBb&orderId=20260117101214777515010300166753758077675";
+        "https://link.dana.id/danakaget?c=sfbnvu92a&r=djCjBb&orderId=20260120101214131315010300166753759016521"; // TARO LINK DAGET NYA DISINI
 
-      // BANK SOAL (LEVEL MENENGAH)
+      // LIST SOAL
       const questions = [
         {
-          code: `let x = 2;
-      let y = 3;
-      let z = 4;
-
-      let hasil = x ** y + z * 2 - 1;
-      console.log(hasil);`,
-          answer: 15, // 2^3 = 8 + (4*2)=8 -1 = 15
+          text: "Siapa Leader di Hearts2Hearts?",
+          answer: ["jiwoo"],
+          type: "text",
         },
         {
-          code: `let hearts = 3;
-      let bonus = 2;
-
-      hearts += bonus;
-      let total = hearts ** bonus;
-      console.log(total);`,
-          answer: 25, // (3+2)^2
+          text: "Apa Nama Fandom Hearts2Hearts?",
+          answer: ["s2u", "hachu"],
+          type: "text",
         },
         {
-          code: `let a = 10;
-      let b = 4;
-
-      a = a - b;
-      b = a + b;
-
-      console.log(a * b);`,
-          answer: 60, // a=6, b=10 → 6*10
+          text: "Tanggal Berapa Hearts2Hearts Debut?",
+          answer: 24,
+          type: "number",
         },
         {
-          code: `let fans = 2;
-
-      fans = fans ** 3;
-      fans = fans / 2 + 2;
-
-      console.log(fans);`,
-          answer: 6, // 2^3=8 → 8/2=4 +2
+          text: "Queen Carmen Lahir Bulan Apa?",
+          answer: ["maret"],
+          type: "text",
         },
         {
-          code: `let bias = 2;
-      let comeback = 3;
-      let stage = 2;
-
-      let result = (bias + stage) ** comeback - stage;
-      console.log(result);`,
-          answer: 62, // (2+2)^3 = 64 - 2
+          text: "Siapa nama bapak saya?🤣",
+          answer: ["triyono"],
+          type: "text",
         },
         {
-          code: `let x = 5;
-
-      x += 3;
-      x *= 2;
-      x -= 4;
-
-      console.log(x);`,
-          answer: 12, // ((5+3)*2)-4
-        },
-        {
-          code: `let a = 3;
-      let b = 2;
-
-      let result = a ** b + b ** a;
-      console.log(result);`,
-          answer: 17, // 3^2 + 2^3 = 9 + 8
+          text: "Berapa Anggota Hearts2Hearts?",
+          answer: 8,
+          type: "number",
         },
       ];
 
-
-      // Pilih soal random saat load
+      // RANDOM SOAL AFTER LOAD
       const randomQuestion =
         questions[Math.floor(Math.random() * questions.length)];
-      document.getElementById("question").textContent = randomQuestion.code;
+
+      document.getElementById("question").textContent = randomQuestion.text;
 
       function unlock() {
-        const input = document.getElementById("password").value;
+        const inputEl = document.getElementById("password");
+        const inputValue = inputEl.value.trim();
         const error = document.getElementById("error");
         const loading = document.getElementById("loading");
         const button = document.getElementById("unlockBtn");
 
         error.style.display = "none";
 
-        if (Number(input) === randomQuestion.answer) {
+        let isCorrect = false;
+
+        // LOGIKA JAWABAN
+        if (randomQuestion.type === "text") {
+          const userAnswer = inputValue.toLowerCase();
+
+          if (Array.isArray(randomQuestion.answer)) {
+            isCorrect = randomQuestion.answer.includes(userAnswer);
+          } else {
+            isCorrect = userAnswer === randomQuestion.answer.toLowerCase();
+          }
+        }
+
+        if (randomQuestion.type === "number") {
+          const userNumber = Number(inputValue);
+          isCorrect = userNumber === randomQuestion.answer;
+        }
+
+        // HASIL
+        if (isCorrect) {
           button.disabled = true;
           button.innerText = "PROCESSING...";
           loading.style.display = "block";
@@ -219,8 +207,3 @@
     </script>
   </body>
 </html>
-
-
-
-
-
