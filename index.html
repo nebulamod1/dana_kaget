@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
@@ -11,68 +11,87 @@
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
-      background: #f4f6f8;
       margin: 0;
+      padding: 16px;
       min-height: 100svh;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 16px;
+      background: #f4f6f8;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
     }
 
     .card {
-      background: #fff;
       width: 100%;
-      max-width: 420px;
-      padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 10px 24px rgba(0,0,0,.12);
+      max-width: 430px;
+      background: white;
+      padding: 24px;
+      border-radius: 20px;
+      box-shadow: 0 10px 28px rgba(0,0,0,.12);
       text-align: center;
     }
 
     h2 {
-      margin: 0 0 8px;
-      font-size: 22px;
+      margin: 0;
+      font-size: 32px;
+      line-height: 1.2;
     }
 
-    p {
-      font-size: 14px;
-      color: #555;
+    .subtitle {
+      margin-top: 16px;
+      color: #666;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .question-title {
+      margin-top: 24px;
       margin-bottom: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #374151;
     }
 
     pre {
+      margin: 0;
       background: #f1f5f9;
-      padding: 14px;
-      border-radius: 12px;
-      font-size: 14px;
+      padding: 16px;
+      border-radius: 14px;
       text-align: left;
       overflow-x: auto;
-      white-space: pre-wrap;
+      white-space: pre;
+      font-size: 13px;
+      line-height: 1.6;
+      font-family: Consolas, Monaco, monospace;
+      color: #111827;
     }
 
     input {
       width: 100%;
-      padding: 12px;
-      margin-top: 14px;
-      border-radius: 10px;
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 12px;
       border: 1px solid #d1d5db;
-      font-size: 16px;
+      font-size: 18px;
       text-align: center;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #16a34a;
     }
 
     button {
-      margin-top: 16px;
       width: 100%;
-      padding: 14px;
+      margin-top: 16px;
+      padding: 15px;
       border: none;
       border-radius: 12px;
       background: #16a34a;
       color: white;
-      font-size: 16px;
-      font-weight: 600;
+      font-size: 17px;
+      font-weight: 700;
       cursor: pointer;
     }
 
@@ -81,65 +100,78 @@
       cursor: not-allowed;
     }
 
-    .error {
-      color: #dc2626;
-      margin-top: 12px;
+    .loading {
+      margin-top: 14px;
+      color: #15803d;
+      font-size: 14px;
       display: none;
     }
 
-    .loading {
-      color: #15803d;
-      margin-top: 12px;
+    .error {
+      margin-top: 14px;
+      color: #dc2626;
+      font-size: 14px;
       display: none;
     }
   </style>
 </head>
 
 <body>
-  <div class="card">
-    <h2>💸 Unlock Dana Kaget</h2>
-    <p>Yang mau DAGET asah otak dulu AWOKWOK 🤣</p>
 
-    <pre id="question"></pre>
+<div class="card">
 
-    <input
-      type="number"
-      id="password"
-      placeholder="Jawab di sini ya bree"
-      inputmode="numeric"
-    >
+  <h2>💸 Unlock Dana Kaget</h2>
 
-    <button id="unlockBtn" onclick="unlock()">
-      UNLOCK
-    </button>
-
-    <div class="loading" id="loading">
-      ⏳ Menghubungkan ke server rejeki...
-    </div>
-
-    <div class="error" id="error">
-      ❌ Jawaban salah bree, refresh dulu terus coba lagi
-    </div>
+  <div class="subtitle">
+    Mau daget? Pemanasan otak dulu yaa 🤣
   </div>
 
-  <script>
-    const danaLink =
-      "https://link.dana.id/danakaget?c=sls8tp2cj&r=djCjBb&orderId=20260715101214555915010300166753787345147";
+  <div class="question-title">
+    🧠 Berapa hasil output berikut?
+  </div>
 
-    const questions = [
-      {
-        code: `let x = 2;
+  <pre id="question"></pre>
+
+  <input
+    type="number"
+    id="password"
+    placeholder="Jawab di sini ya bree"
+    inputmode="numeric"
+  >
+
+  <button id="unlockBtn">
+    UNLOCK
+  </button>
+
+  <div class="loading" id="loading">
+    ⏳ Menghubungkan ke server rejeki...
+  </div>
+
+  <div class="error" id="error">
+    ❌ Jawaban salah bree, refresh dulu buat gacha soal baru 😭
+  </div>
+
+</div>
+
+<script>
+
+const danaLink =
+  "https://link.dana.id/danakaget?c=ISI_LINK_DANA_KAMU";
+
+const questions = [
+{
+code: `let x = 2;
 let y = 3;
 let z = 4;
 
 let hasil = x ** y + z * 2 - 1;
 
 console.log(hasil);`,
-        answer: 15
-      },
+answer: 15
+},
 
-      {
-        code: `let hearts = 3;
+{
+code: `let hearts = 3;
 let bonus = 2;
 
 hearts += bonus;
@@ -147,226 +179,110 @@ hearts += bonus;
 let total = hearts ** bonus;
 
 console.log(total);`,
-        answer: 25
-      },
+answer: 25
+},
 
-      {
-        code: `let a = 10;
+{
+code: `let a = 10;
 let b = 4;
 
 a = a - b;
 b = a + b;
 
 console.log(a * b);`,
-        answer: 60
-      },
+answer: 60
+},
 
-      {
-        code: `let fans = 2;
+{
+code: `let fans = 2;
 
 fans = fans ** 3;
 fans = fans / 2 + 2;
 
 console.log(fans);`,
-        answer: 6
-      },
+answer: 6
+},
 
-      {
-        code: `let bias = 2;
+{
+code: `let bias = 2;
 let comeback = 3;
 let stage = 2;
 
 let result = (bias + stage) ** comeback - stage;
 
 console.log(result);`,
-        answer: 62
-      },
+answer: 62
+},
 
-      {
-        code: `let x = 5;
-
-x += 3;
-x *= 2;
-x -= 4;
-
-console.log(x);`,
-        answer: 12
-      },
-
-      {
-        code: `let a = 3;
-let b = 2;
-
-let result = a ** b + b ** a;
-
-console.log(result);`,
-        answer: 17
-      }
-    ];
-
-    const randomQuestion =
-      questions[Math.floor(Math.random() * questions.length)];
-
-    document.getElementById("question").textContent =
-      randomQuestion.code;
-
-    function unlock() {
-      const input = document.getElementById("password").value;
-      const error = document.getElementById("error");
-      const loading = document.getElementById("loading");
-      const button = document.getElementById("unlockBtn");
-
-      error.style.display = "none";
-
-      const isCorrect =
-        Number(input) === randomQuestion.answer;
-
-      if (isCorrect) {
-        button.disabled = true;
-        button.innerText = "PROCESSING...";
-        loading.style.display = "block";
-
-        setTimeout(() => {
-          window.location.href = danaLink;
-        }, 1500);
-      } else {
-        error.style.display = "block";
-      }
-    }
-  </script>
-</body>
-</html>      <input type="text" id="password" placeholder="Jawab disini ya bree" />
-
-      <button id="unlockBtn" onclick="unlock()">UNLOCK</button>
-
-      <div class="loading" id="loading">
-        ⏳ Menghubungkan ke server rejeki...
-      </div>
-
-      <div class="error" id="error">
-        ❌ Jawaban salah bree, refresh dulu terus coba lagi
-      </div>
-    </div>
-
-    <script>
-      const danaLink =
-        "https://link.dana.id/danakaget?c=sls8tp2cj&r=djCjBb&orderId=20260715101214555915010300166753787345147"; // TARO LINK DAGET NYA DISINI
-
-      // LIST SOAL
-      const questions = [
-  {
-    code: `let x = 2;
-let y = 3;
-let z = 4;
-
-let hasil = x ** y + z * 2 - 1;
-console.log(hasil);`,
-    answer: 15, // 2^3 = 8 + (4*2)=8 -1 = 15
-  },
-  {
-    code: `let hearts = 3;
-let bonus = 2;
-
-hearts += bonus;
-let total = hearts ** bonus;
-console.log(total);`,
-    answer: 25, // (3+2)^2
-  },
-  {
-    code: `let a = 10;
-let b = 4;
-
-a = a - b;
-b = a + b;
-
-console.log(a * b);`,
-    answer: 60, // a=6, b=10 → 6*10
-  },
-  {
-    code: `let fans = 2;
-
-fans = fans ** 3;
-fans = fans / 2 + 2;
-
-console.log(fans);`,
-    answer: 6, // 2^3=8 → 8/2=4 +2
-  },
-  {
-    code: `let bias = 2;
-let comeback = 3;
-let stage = 2;
-
-let result = (bias + stage) ** comeback - stage;
-console.log(result);`,
-    answer: 62, // (2+2)^3 = 64 - 2
-  },
-  {
-    code: `let x = 5;
+{
+code: `let x = 5;
 
 x += 3;
 x *= 2;
 x -= 4;
 
 console.log(x);`,
-    answer: 12, // ((5+3)*2)-4
-  },
-  {
-    code: `let a = 3;
+answer: 12
+},
+
+{
+code: `let a = 3;
 let b = 2;
 
 let result = a ** b + b ** a;
+
 console.log(result);`,
-    answer: 17, // 3^2 + 2^3 = 9 + 8
-  },
+answer: 17
+}
 ];
 
-      // RANDOM SOAL AFTER LOAD
-      const randomQuestion =
-        questions[Math.floor(Math.random() * questions.length)];
+const randomQuestion =
+  questions[Math.floor(Math.random() * questions.length)];
 
-      document.getElementById("question").textContent = randomQuestion.text;
+document.getElementById("question").textContent =
+  randomQuestion.code;
 
-      function unlock() {
-        const inputEl = document.getElementById("password");
-        const inputValue = inputEl.value.trim();
-        const error = document.getElementById("error");
-        const loading = document.getElementById("loading");
-        const button = document.getElementById("unlockBtn");
+const button = document.getElementById("unlockBtn");
 
-        error.style.display = "none";
+button.addEventListener("click", unlock);
 
-        let isCorrect = false;
+document
+  .getElementById("password")
+  .addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+      unlock();
+    }
+  });
 
-        // LOGIKA JAWABAN
-        if (randomQuestion.type === "text") {
-          const userAnswer = inputValue.toLowerCase();
+function unlock() {
 
-          if (Array.isArray(randomQuestion.answer)) {
-            isCorrect = randomQuestion.answer.includes(userAnswer);
-          } else {
-            isCorrect = userAnswer === randomQuestion.answer.toLowerCase();
-          }
-        }
+  const input =
+    document.getElementById("password").value;
 
-        if (randomQuestion.type === "number") {
-          const userNumber = Number(inputValue);
-          isCorrect = userNumber === randomQuestion.answer;
-        }
+  const error =
+    document.getElementById("error");
 
-        // HASIL
-        if (isCorrect) {
-          button.disabled = true;
-          button.innerText = "PROCESSING...";
-          loading.style.display = "block";
+  const loading =
+    document.getElementById("loading");
 
-          setTimeout(() => {
-            window.location.href = danaLink;
-          }, 1500);
-        } else {
-          error.style.display = "block";
-        }
-      }
-    </script>
-  </body>
+  error.style.display = "none";
+
+  if (Number(input) === randomQuestion.answer) {
+
+    button.disabled = true;
+    button.innerText = "PROCESSING...";
+    loading.style.display = "block";
+
+    setTimeout(() => {
+      window.location.href = danaLink;
+    }, 1500);
+
+  } else {
+    error.style.display = "block";
+  }
+}
+
+</script>
+
+</body>
 </html>
-
