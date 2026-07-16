@@ -122,41 +122,75 @@
 
     <script>
       const danaLink =
-        "https://link.dana.id/danakaget?c=s7fne96jb&r=djCjBb&orderId=20260120101214833415010300166753759229508"; // TARO LINK DAGET NYA DISINI
+        "https://link.dana.id/danakaget?c=sls8tp2cj&r=djCjBb&orderId=20260715101214555915010300166753787345147"; // TARO LINK DAGET NYA DISINI
 
       // LIST SOAL
       const questions = [
-        {
-          text: "Siapa Leader di Hearts2Hearts?",
-          answer: ["jiwoo"],
-          type: "text",
-        },
-        {
-          text: "Apa Nama Fandom Hearts2Hearts?",
-          answer: ["s2u", "hachu"],
-          type: "text",
-        },
-        {
-          text: "Tanggal Berapa Hearts2Hearts Debut?",
-          answer: 24,
-          type: "number",
-        },
-        {
-          text: "Queen Carmen Lahir Bulan Apa?",
-          answer: ["maret"],
-          type: "text",
-        },
-        {
-          text: "Siapa nama aku?🤣",
-          answer: ["fadil", "fadilah", "nurul", "Nurul", "Fadil", "Fadilah"],
-          type: "text",
-        },
-        {
-          text: "Berapa Anggota Hearts2Hearts?",
-          answer: 8,
-          type: "number",
-        },
-      ];
+  {
+    code: `let x = 2;
+let y = 3;
+let z = 4;
+
+let hasil = x ** y + z * 2 - 1;
+console.log(hasil);`,
+    answer: 15, // 2^3 = 8 + (4*2)=8 -1 = 15
+  },
+  {
+    code: `let hearts = 3;
+let bonus = 2;
+
+hearts += bonus;
+let total = hearts ** bonus;
+console.log(total);`,
+    answer: 25, // (3+2)^2
+  },
+  {
+    code: `let a = 10;
+let b = 4;
+
+a = a - b;
+b = a + b;
+
+console.log(a * b);`,
+    answer: 60, // a=6, b=10 → 6*10
+  },
+  {
+    code: `let fans = 2;
+
+fans = fans ** 3;
+fans = fans / 2 + 2;
+
+console.log(fans);`,
+    answer: 6, // 2^3=8 → 8/2=4 +2
+  },
+  {
+    code: `let bias = 2;
+let comeback = 3;
+let stage = 2;
+
+let result = (bias + stage) ** comeback - stage;
+console.log(result);`,
+    answer: 62, // (2+2)^3 = 64 - 2
+  },
+  {
+    code: `let x = 5;
+
+x += 3;
+x *= 2;
+x -= 4;
+
+console.log(x);`,
+    answer: 12, // ((5+3)*2)-4
+  },
+  {
+    code: `let a = 3;
+let b = 2;
+
+let result = a ** b + b ** a;
+console.log(result);`,
+    answer: 17, // 3^2 + 2^3 = 9 + 8
+  },
+];
 
       // RANDOM SOAL AFTER LOAD
       const randomQuestion =
